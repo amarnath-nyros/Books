@@ -1,0 +1,71 @@
+<html>
+<head>
+<style>
+#fonts
+{
+color:red;
+} 
+</style>
+<title>SHOW MY ALBUM</title></head>
+<body>
+<div  height:50px; width:55px;" >
+<p><%= session[:name]%>
+   <%# form_tag ({:action => 'create'}, :multipart => true) do %></p>
+<p>THIS IS   <%=session[:user_name]%>   ALBUM </p>
+<table width="903" height="291" >
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;  </td>
+    </tr>
+  <tr>
+    <td width="151">User Name</td>
+    <td width="26">&nbsp;</td>
+    <td width="158">:&nbsp;</td>
+    <td id="fonts" width="340">&nbsp;<%= @album.albumname %> <%= error_message_on :album, :name %>   </tr>
+  <tr>
+    <td height="21">Location</td>
+    <td>&nbsp;</td>
+    <td>:&nbsp;</td>
+    <td id="fonts"><%= @album.albumlocation %><%= error_message_on :album, :albumlocation %>  
+  </tr>
+  <tr>
+    <td height="21">My photo</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><%= image_tag @album.aphoto.url(:smallsthumb)%> &nbsp;</td>
+  </tr>
+  <tr>
+    <td height="21"><p><%= link_to "Edit", :action =>"edit", :id => @album.id %>
+      Click to edit Album </p>
+<td width="26">&nbsp;</td>
+   
+    <td width="158">&nbsp;</td>
+
+  </tr>
+  <tr>
+  
+    <td>&nbsp;  <%= @album.album_photos  %></td><td> <td><%#= link_to "MY ALBUM LIST",:controller => "user", :action=>"show", :id =>@album.id,:val => params[:id] %></td>&nbsp;<td width="10"></td>
+    <td width="190">CLICK THIS LINK TO <%= link_to "Addphoto",:controller => "album", :action=>"addphoto", :id =>@album.id %></td>
+  </tr>
+  
+</table>
+
+ <p>
+   <% @album.album_photos.each do |@album| %>
+  <%= image_tag @album.bphoto.url(:smallsthumb)%> &nbsp;</p>
+ <p><br/>
+ <%= link_to "Back to album list",:controller=>"user", :action => "adminlist" , :id =>@album.album.user_id %></p>
+ <tr>
+    <td  align="center" height="62"><div align="left"><%= link_to "Edit",:controller => "album", :action=>"editphoto", :id =>@album.id %>  <%= link_to "Delete",:controller => "album", :action=>"deletephoto", :id =>@album.id %> </div></td></tr>
+	  <tr><td  align="center" height="62"><div align="left"></div>
+	    <p>&nbsp;</p></td>
+  </tr>
+      <p>
+        <% end %>
+  </p>
+      <p>&nbsp;    </p>
+</div>
+</body>
+</html>

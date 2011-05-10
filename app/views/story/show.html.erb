@@ -1,0 +1,28 @@
+<html>
+<head>
+<style>
+#fonts
+{
+color:red;
+} 
+</style><b>   Add Your Stories Here</b>
+<title>STORY SHOW PAGE</title></head>
+<body>
+<div  height:50px; width:55px;" >
+<p><%= session[:name]%>
+   <%# form_tag ({:action => 'create'}, :multipart => true) do %></p>
+<p>&nbsp;</p>
+<tr>
+
+   
+    <td width="43">&nbsp;</td>
+  <td id="fonts" width="330">STORY TITLE: <%= @story.storyname %>
+    <p>&nbsp;   </p>
+</tr>
+<tr>
+    <td> DESCRIPTION: <%= @story.storydescription %> <%= error_message_on :story, :storydescription %></td>
+	<p><%= link_to "EDIT MY STORY"  ,:action => "edit",:id=> @story  %></p>
+  
+  <td id="fonts"></tr>
+</body>
+</html>

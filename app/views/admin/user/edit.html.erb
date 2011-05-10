@@ -1,0 +1,66 @@
+<html>
+<head>
+<style>
+#fonts
+{
+color:red;
+} 
+</style>
+</head>
+<body>
+<h1>Edit <%=session[:user_name]%>Profile &nbsp; </h1>
+<div style="background-color:#9999CC; height:450px; width:350px;" >
+<% form_for (:user,  :url => {:action => "update" ,:id => @user.id},  :html => {:multipart => true}) do  %> 
+<%# form_tag ({:action => 'create'}, :multipart => true) do %>
+<table width="326" height="225" >
+  <tr>
+    <td width="130">&nbsp;User Name</td>
+    <td width="14">:&nbsp;</td>
+    <td id="fonts" width="139">&nbsp;<%= text_field :user,:name,:size=>15 %> <%= error_message_on :user, :name %>  </tr>
+  <tr>  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>:&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;First Name</td>
+    <td>:&nbsp;</td>
+    <td id="fonts">&nbsp;<%= text_field :profile,:fname,:size=>15 %> <%= (error_message_on :profile, :fname)%></td>
+  </tr>
+  <tr>
+    <td>&nbsp;Last Name</td>
+    <td>:&nbsp;</td>
+    <td id="fonts">&nbsp;<%= text_field :profile,:lname,:size=>15 %> <%= (error_message_on :profile, :lname)%></td>
+  </tr>
+  <tr>
+    <td>&nbsp;Email</td>
+    <td>:&nbsp;</td>
+    <td id="fonts">&nbsp;<%= text_field :profile,:email,:size=>15 %> <%= (error_message_on :profile, :email)%></td>
+  </tr>
+  <tr>
+  <td>&nbsp;Address</td>
+  <td>:&nbsp;</td>
+  <td id="fonts">&nbsp;<%= text_area :profile,:address,:cols => 10, :rows => 4 %> <%= (error_message_on :profile, :address)%></td>
+  </tr>
+  <tr>
+    <td>EditPhoto</td>
+   
+    <td><td height="57"><%= file_field :user,:photo%>&nbsp; </td>
+  
+  </tr>
+  <tr>
+ 
+    
+  </tr>
+  <tr>
+    <td  align="center"><%= submit_tag "update"  %> </td>
+  </tr>
+</table>
+<p>
+  <% end %>
+  <%#= link_to "users List",:action => :list %></p>
+<p><%#= link_to "update",:controller=>"myuser", :action => "update" %>&nbsp; </p>
+<%#= link_to "logout", :action => "logout" %>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+<html><title>ADD STORY</title>
+<body >
+<title>
+<div align="left">NEW</div>
+</title>
+ <h1 align="left">Add Stories to User </h1>
+ <div align="left">
+   <% form_for (:user,:url => {:controller =>"story" ,:action => "addstory"},  :html => {:multipart => true}) do  %> 
+   
+ </div>
+ <table width="82%" border="1" height="127">
+   <tr>
+     <td width="25%"><label for="album">Name</label>
+:</td>
+     <td width="41%"><%= text_field ('story', 'storyname') %><%= error_message_on :story, :storyname %></td>
+     <td width="34%">&nbsp;</td>
+   </tr>
+   <tr>
+     <td><label for="album">Story Description </label>
+:</td>
+      <td><%= text_area :'story','storydescription',:cols => 24, :rows => 4 %> <%= (error_message_on :story, :storydescription)%></td>
+     <td>&nbsp;</td>
+   </tr>
+  
+ <td><%= submit_tag "Create" %></td>
+	
+	 
+</table>
+
+
+ <p><%= link_to 'Back',:controller=>'user',:action => 'show' %></p>&nbsp;</p>
+ <p><%end%>
+</p>
+</p>
+<p>&nbsp; </p>
+</body></html>

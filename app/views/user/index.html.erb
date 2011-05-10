@@ -1,0 +1,71 @@
+<html>
+<head>
+<script language="JavaScript" type="text/javascript" >
+function formvalidation()
+    {
+	 var strc =/^[a-zA-Z]+$/;
+	var re = /^[\w ]+$/; 
+     var fname1= document.getElementById('name');
+	 
+			   if((document.getElementById('name').value).trim() == "")
+			   {
+				   alert(" PLEASE Enter USERNAME");
+					document.getElementById('name').focus();
+				    return false;
+			   }
+			   
+			  if((document.getElementById('password').value).trim() == "")
+			   {
+				   alert(" PLEASE Enter pwd");
+					document.getElementById('password').focus();
+				    return false;
+			   }  
+			   
+			
+			   return true;
+	 }
+			 
+</script>
+<title>LOGIN</title>
+<style type="text/css">
+<!--
+.style1 {
+	color: #FF8000;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body >
+
+<p align="center"><br/>
+</p>
+<div align="center">
+  <p> <%= flash[:notice] %></p>
+
+ 
+  <p align="center" class="style1">LOGIN PAGE </p>
+  <table width="462" border="2" >
+    <tr>
+<td height="40" colspan="3" width="450">  <% form_tag ({:action => 'index'},{:onSubmit => 'return formvalidation();'} ) do %>  
+	  
+ <p><strong>LOGIN</strong>......... </p>      </td>
+    </tr>
+    <tr>
+      <td colspan="3" height="218"><p align="center">&nbsp;</p>
+        <p align="center">UserName:<%= text_field_tag 'name'  %></p>
+        <p align="center"> Password: <%= password_field_tag 'password' %></p>
+      <p align="center">&nbsp;</p>
+      <p align="center"><%= submit_tag "login" %> </p>
+      <p>&nbsp;</p></td>
+    </tr>
+  </table>
+ 
+  <p><%#= link_to "Show my books", :action => "list" %></p>
+  <p align="center"><%#= flash[:notice] %></p>
+<%= link_to 'Forgot my password',:controller=>'user',:action => 'forgot_password' %>  </div>
+
+<p align="center">&nbsp;</p>
+</body>
+ <% end %>
+</html>

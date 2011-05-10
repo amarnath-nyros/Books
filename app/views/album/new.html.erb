@@ -1,0 +1,52 @@
+
+<html><title>NEWALBUM</title>
+<body  bgcolor="#FFCC00">
+
+<title>
+<div align="left">NEW</div>
+</title>
+ <h1 align="left">ADD Images to album </h1>
+ <div align="left">
+   <% form_for (:album,  :url => {:action => "create"},  :html => {:multipart => true}) do  %> 
+   
+ </div>
+ <table width="82%" border="25">
+   <tr>
+     <td width="46%"><label for="album">Name</label>
+:<%= error_message_on :album, :albumname %></td>
+     <td width="20%"><%= text_field ('album', 'albumname') %></td>
+     <td width="34%">&nbsp;</td>
+   </tr>
+   <tr>
+     <td><label for="album">Location</label>
+:<%= error_message_on :album, :albumlocation %></td>
+     <td><%= text_field ('album', 'albumlocation') %></td>
+     <td>&nbsp;</td>
+   </tr>
+   <tr>
+     <td>UPLOAD YOUR IMAGE HERE </td>
+     <td><%= file_field :album,:aphoto%>&nbsp; <%= (error_message_on :album, :aphoto)%> </td>
+     <td>&nbsp;</td>
+   </tr>
+   <tr>
+     <td>&nbsp;</td>
+     <td><p>&nbsp;</p>
+       <p>&nbsp;</p>
+     <%= submit_tag "Create" %></td>
+     <td>&nbsp;</td>
+   </tr>
+ </table>
+<p align="left"><label for="album"></label>
+</p>
+<p align="left">
+  
+<p align="left"><label for="album"></label>
+</p>
+<p align="left">
+  
+ </p> 
+<p><%end%>
+</p>
+</p>
+<p>&nbsp; </p>
+</body></html>

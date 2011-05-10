@@ -1,0 +1,87 @@
+
+<title> HOME PAGE</title>
+
+<div style="width:300px;background-color:#CCCCCC;">
+
+ <% for @album in @albums %>
+ 
+ 				  <table>
+				  <tr> <td width="200px">
+				  <%=  image_tag @album.aphoto.url(:smallsthumb) %>
+				       </td>
+					   <td> <b> Title:</b><br/>
+					 
+					                 
+									<%=h @album.albumname %><br/>
+									   <b>AlbumLocation:</b><br/>
+									<%=h @album.albumlocation %><br/>
+										<%= link_to "SHOW",:controller => "album", :action=>"show", :id =>@album.id %>
+								<%=h @album.rating %>
+								
+							<% if session[:user_id] %>	
+					           <div id="star-ratings-block_<%= @album.id  %>">
+								<%= render :partial => "rating/rating", :locals => { :album => @album } %>
+							   </div>
+					<% else %>
+					              
+					          <div id="star-ratings-block_<%= @album.id  %>">
+								<%= render :partial => "rating/ratehome", :locals => { :album => @album } %>
+							   </div>
+					<% end %>	
+
+								 
+					         
+	
+					</td> 								   
+				  </tr><hr width="910"/>
+				  </table>
+				   <% end %>
+
+	
+
+<p> <b>STORIES:</b><hr/>&nbsp;</p>
+<div align="center" style="background-color:#FFFFFF;"><strong>LIST OF STORIES </strong></div>
+<div style="width:300px;background-color:#CCCCCC;"> 
+ <% for @story in @stories %>
+ 
+ 				  <table  >
+				  <tr> 
+					<hr width="912" />
+					       <b>Story Name:</b><br/>
+					      <%=h @story.storyname %><br/>
+					         <b>Story Description</b></p>
+					       :<%=h @story.storydescription %><br/>
+				           <%= link_to "SHOW",:controller => "story", :action=>"show", :id =>@story.id %>	    <p>
+			        </td>
+					   <b>Comments For stories</b>
+					  
+			<% form_tag ({:controller => "story",:action => 'post', :id =>@story.id}) do %>
+				     
+			    
+         <% @story.comments .each do |com| %>
+           <br>   
+           <%=com.comment  %> </br>
+              <%end%></td>
+			      <% end %>
+        </tr>	
+								<% if session[:user_id] %>	
+					           <div id="star-ratings-block_<%= @story.id  %>">
+								<%= render :partial => "rating/rating1", :locals => { :story => @story } %>
+							   </div>
+					<% else %>
+					              
+					          <div id="star-ratings-block_<%= @story.id  %>">
+								<%= render :partial => "rating/ratehome1", :locals => { :story => @story } %>
+							   </div>
+					<% end %>	
+
+								
+					      
+  <td>
+				      
+  </table>
+<% end%>
+
+</div>
+</body>
+</html>

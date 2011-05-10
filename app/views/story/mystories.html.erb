@@ -1,0 +1,58 @@
+<title>MY STORIES</title>
+<%=flash[:notice2]%>
+
+<div style="background-color: #CCCCCC;margin-left:-30px; height:600px; width:880px;" >
+	  MY STORIES  <%= link_to "Add Story",:controller=>"story", :action => "addstory" %> 
+	  <div align="right"><%= link_to "LOGOUT",:controller=>"user", :action => "logout" %>  </div>
+	  <table border="0" width="790" >
+  
+              <tr>
+              <td width="1"></td>
+                <td width="149" >STORYNAME</td>
+             
+                <td width="156">ACTIONS</td>
+                <td >RATINGS</td>
+                <td width="135">COMMENTS</td>
+                <td >MY POSTS </td>
+				 
+              </tr>
+           
+			 <% @storys.each do |@story| %>
+			 <tr height="50px;"><td height="38"></td>
+			 <td>
+            <%= @story.storyname  %> </td>
+          
+           <td > <%= link_to "Show",:controller => "story" ,:action=>"show", :id =>@story.id %> <%= link_to "Edit",:controller => "story", :action=>"edit",:id =>@story.id %>  <%= link_to "Delete",:controller => "story" ,:action=>"delete", :id =>@story.id %></td>
+          <td width="160"><div id="star-ratings-block_<%=@story.id %>"> <%= render :partial => "rating/rating1", :locals => { :story => @story } %></div>
+               
+           </td>
+          <td >
+            <% form_tag ({:controller => "story",:action => 'post', :id =>@story.id}) do %>
+            <%= text_area_tag 'comment' %><%= submit_tag "post"%>
+            <% end %>
+			</td>
+          <td width="163"><% @story.comments .each do |com| %>
+              <%=com.comment  %> <br>
+              <%end%></td>
+        </tr>
+
+<%end%>
+</table>
+<%= will_paginate @stories %>
+  <%= page_entries_info @stories %> 
+ 
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

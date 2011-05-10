@@ -1,0 +1,69 @@
+<html>
+<head>
+
+
+<%= javascript_include_tag :defaults %>
+<%=  stylesheet_link_tag("userstyles") %>
+<style>
+#fonts
+{
+color:red;
+} 
+.style1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FF8000;
+}
+.style2 {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #FF8000; font-style: italic; }
+</style>
+<title>MY PROFILES</title></head>
+<body>
+<div  height:50px; width:55px;" >
+<div align="right"><%= link_to "LOGOUT",:controller=>"user", :action => "logout" %></div>
+<p>
+ <b><%=session[:user_name]%> Profile</b>
+  
+<% form_tag ({:action => 'create'}, :multipart => true) do %> <%= flash[:notice1] %><%=flash[:notice2]%>&nbsp;  <%= flash[:message] %>   <%= flash[:notice]%></p>
+<p ><%=flash[:show]%>&nbsp;</p >
+
+<p align="right"><%= link_to 'Change my password',:controller=>'user',:action => 'changepassword' %>&nbsp;  </p>
+<div>
+<table width="577"  height="265" >
+  <tr>
+    <td width="112" height="21">&nbsp;User Name</td >
+    <td colspan="2" rowspan="8"></td>
+    <td id="fonts" width="435">&nbsp;<%= @user.name %> <%= error_message_on :user, :name %>  </tr>
+  <tr>
+    <td height="21">&nbsp;First Name</td>
+    <td id="fonts">&nbsp;<%= @profile.fname %> </td> <%= (error_message_on :profile, :fname)%>  </tr>
+  <tr>
+    <td height="21">&nbsp;Last Name</td>
+    <td id="fonts">&nbsp;<%= @profile.lname %></td><%= (error_message_on :profile, :lname )%><td width="9"></td>
+  </tr>
+  <tr>
+    <td height="21">&nbsp;Email</td>
+    <td id="fonts">&nbsp;<%= @profile.email  %> <%= (error_message_on :profile, :email)%></td>
+  </tr>
+  <tr>
+    <td height="21">&nbsp;Address</td>
+    <td id="fonts">&nbsp;<%=@profile.address %> <%= (error_message_on :profile, :address)%></td>
+  </tr>
+  <tr>
+    <td height="21">My photo</td>
+    <td><%= image_tag @user.photo.url(:smallsthumb)%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="21"><p><%#= link_to "Edit", :action => "edit" %></p>
+        <p> <%#= link_to "showlist",:controller=>"album", :action => "list" %> </p>
+      <p><%= link_to "Edit Profile",:controller=>"user", :action => "edit" %></p>      </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="21"><% end %></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p><%flash[:notice]%>&nbsp;</p>
+</div>
+</body>
+</html>

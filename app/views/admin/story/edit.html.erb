@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>EDIT</title>
+</head>
+<body  bgcolor="#FFFFFF">
+<div style="background-color: #CCCCCC; height:500px; width:500px;" >
+<p>
+  <% form_for :story, :url =>{ :action => "update",:id =>@story.id },  :html => {:multipart => true} do  %>
+</p>
+<p>YOU CAN EDIT YOUR STORIES HERE AND CLICK UPDATE1 </p>
+
+<p><label for="book_Details"> STORY NAME</label>:
+<%= text_field 'story', 'storyname' %></p>
+
+<p><label for="book_Details">STORY DESCRIPTION</label>:
+<%= text_area 'story', 'storydescription'  %></p>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>  <%= submit_tag "update"%>
+  
+  
+  <%end%>
+</div>
+  
+</p>
+</body>
+</html>

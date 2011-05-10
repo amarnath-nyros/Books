@@ -1,0 +1,71 @@
+<html>
+<head>
+
+
+<%= javascript_include_tag :defaults %>
+<%=  stylesheet_link_tag("userstyles") %>
+<style>
+#fonts
+{
+color:red;
+} 
+.style1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FF8000;
+}
+.style2 {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #FF8000; font-style: italic; }
+</style>
+<title>SHOW MY PAGE</title></head>
+<body>
+<div  height:50px; width:55px;" >
+<div align="right"><%= link_to "LOGOUT",:controller=>"user", :action => "logout" %></div>
+<p>WELCOME TO <%=session[:user_name]%>
+    <%# form_for (:user,  :url => {:action => "create"},  :html => {:multipart => true}) do  %> 
+    <% form_tag ({:action => 'create'}, :multipart => true) do %> </p>
+<p>&nbsp;  </p>
+<div style="background-color:#99BB33" >
+<span class="style1">  MY </span><span class="style2">ALBUMS </span><%= link_to "Add album",:controller=>"album", :action => "addalbum" %>
+<table width="92%" border="0">
+    <tr>
+      <td width="4%" height="21">I D</td>
+      <td width="6%">NAME</td>
+      <td width="10%">LOCATION</td>
+      <td width="15%"><div align="center">ACTIONS</div></td>
+      <td width="14%"> MY ALBUM</td>
+      <td width="20%">RATINGS</td>
+      <td width="31%">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="866" border="0" height="81">
+    <% @albums.each do |@album| %>
+	
+    <tr>
+     <td width="42" height="77"><div align="center"><%= @album.id  %></div></td>
+      <td width="40" height="77"><div align="left"><%= @album.albumname  %></div></td>
+      <td width="89" height="77"><div align="left"><%= @album.albumlocation  %></div></td>
+	  		 
+ <td width="17"><%= link_to "Show",:controller => "album" ,:action=>"show", :id =>@album.id %> </td>
+<td width="17">  <%= link_to "Edit",:controller => "album", :action=>"edit", :id =>@album.id %></td>
+<td width="23"><%= link_to "Delete",:controller => "album" ,:action=>"delete", :id =>@album.id %></td>
+<td width="112"><%= image_tag @album.aphoto.url(:smallsthumb)%> </td>
+ 
+	<td><p>
+	<div id="star-ratings-block_<%=@album.id %>">
+	 <%= render :partial => "rating/rating", :locals => { :album => @album } %></p>
+      </div> <td width="170">&nbsp;
+        <div align="left">
+        <%end%></td>
+      <td width="256">
+  </table>
+	
+	
+  <p class="style2">
+</div>
+    </tr>
+  </table>
+  
+   <%end%>
+    
+</body>
+</html>

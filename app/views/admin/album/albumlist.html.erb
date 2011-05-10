@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Untitled Document</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+</head>
+
+<body bgcolor="#FFFFFF">
+ <p>ALBUM LIST </p>
+ <p>SNO  NAME
+    LOCATION ALBUM IMAGE
+   <% @albums.each do |@album| %>
+ </p>
+ <table width="287" height="71" >
+
+    <%#= @user.name %> <%#= error_message_on :user, :name %> 
+    
+
+<tr>
+  <td width="76">&nbsp;</td>
+  <td width="85">&nbsp;</td>
+  <td width="61">&nbsp;</td>
+  <td height="42" width="45">&nbsp;</td>
+<tr>
+  <td><%= @album.id %></td>
+  <td><%= @album.albumname %></td>
+  <td><%= @album.albumlocation %> </td>
+  <td colspan="2"><%= image_tag @album.aphoto.url(:smallsthumb)%>&nbsp;</td>
+  <p><%#= link_to "Edit", :action => "edit" %></p>
+</table> 
+
+<%end%>
+
+
+
+</body>
+</html>

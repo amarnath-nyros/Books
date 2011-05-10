@@ -1,0 +1,89 @@
+<html>
+<head>
+
+
+<%= javascript_include_tag :defaults %>
+<%=  stylesheet_link_tag("userstyles") %>
+<style>
+#fonts
+{
+color:red;
+} 
+.style1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FF8000;
+}
+.style2 {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #FF8000; font-style: italic; }
+</style>
+<title>SHOW MY PAGE</title></head>
+<body>
+<div  height:50px; width:55px;" >
+<div align="right"><%= link_to "LOGOUT",:controller=>"user", :action => "logout" %></div>
+<p>WELCOME TO <%=session[:user_name]%>
+    <%# form_for (:user,  :url => {:action => "create"},  :html => {:multipart => true}) do  %> 
+    <% form_tag ({:action => 'create'}, :multipart => true) do %> </p>
+<p>&nbsp;  </p>
+<div>
+<table width="577"  height="455" >
+  <tr>
+    <td width="114" height="33">&nbsp;User Name</td >
+    <td width="70">&nbsp;</td>
+    <td width="43">:&nbsp;</td>
+    <td id="fonts" width="330">&nbsp;<%= @user.name %> <%= error_message_on :user, :name %>  </tr>
+  <tr>
+    <td height="36">&nbsp;First Name</td>
+    <td>&nbsp;</td>
+    <td>:&nbsp;</td>
+    <td id="fonts">&nbsp;<%= @profile.fname %> <%= (error_message_on :profile, :fname)%></td>
+  </tr>
+  <tr>
+    <td height="35">&nbsp;Last Name</td>
+    <td>&nbsp;</td>
+    <td>:&nbsp;</td>
+    <td id="fonts">&nbsp;<%= @profile.lname %> <%= (error_message_on :profile, :lname)%></td>
+  </tr>
+  <tr>
+    <td height="41">&nbsp;Email</td>
+    <td>&nbsp;</td>
+    <td>:&nbsp;</td>
+    <td id="fonts">&nbsp;<%= @profile.email  %> <%= (error_message_on :profile, :email)%></td>
+  </tr>
+  <tr>
+    <td height="39">&nbsp;Address</td>
+    <td>&nbsp;</td>
+    <td>:&nbsp;</td>
+    <td id="fonts">&nbsp;<%=@profile.address %> <%= (error_message_on :profile, :address)%></td>
+  </tr>
+  <tr>
+    <td>My photo</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><%= image_tag @user.photo.url(:smallsthumb)%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="21"><p>&nbsp;</p>
+        <p><%#= link_to "Edit", :action => "edit" %></p>
+    
+      <p><%= link_to "EditProfile",:controller=>"user", :action => "edit" %></p>
+      <p>&nbsp;</p>
+      <p><%#SSSS= link_to "LOGIN",:action => "login" %> </p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="21"><% end %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>  </tr>
+</table>
+<p>&nbsp;</p>
+</div>
+
+    </tr>
+  </table>
+</body>
+</html>

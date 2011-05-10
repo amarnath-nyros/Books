@@ -1,0 +1,25 @@
+
+
+
+ 
+<p><strong> STORIES LIST&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p>S.NO NAME  DISCRIPTION 
+  <% @stories.each do |@story| %>
+</p>
+
+<table width="407">
+
+  
+    <tr>
+      <td height="24" ><%= @story.id %>&nbsp;</td>
+      <td ><%= @story.storyname %>&nbsp;</td>
+      <td ><%= @story.storydescription %></td>
+    </tr>
+    <tr>
+      <td width="30" height="22" >&nbsp;</td>
+      <td width="51" >&nbsp;</td>
+      <td width="310" >&nbsp;</td>  
+    </tr>
+</table>
+  <%end%>

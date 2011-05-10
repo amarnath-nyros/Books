@@ -1,0 +1,91 @@
+<style type="text/css">
+<!--
+#fonts {color:red;
+}
+-->
+</style>
+<title>REGISTER PAGE</title><h1>Register User <font color="#FF0000" ><%#= "  "+@errs.to_s+"  Errors" %><%#= @atrs %></font></h1>
+<div style="background-color: #CCFFFF; height:500px; width:500px;" >
+  <% form_for (:user,  :url => {:controller=>"user",:action => "create"},  :html => {:multipart => true}) do  %>
+  <%# form_tag ({:action => 'create'}, :multipart => true) do %>
+  <table height="411" width="467" >
+    <tr>
+      <td width="161">&nbsp;User Name:</td>
+      <td width="10">&nbsp;</td>
+      <td width="104">&nbsp;</td>
+      <td width="104">:<%= text_field :user,:name,:size=>15 %> <%= error_message_on :user, :name %></td>
+      <td id="fonts" width="59">
+    </tr>
+    <tr>
+      <td>&nbsp;Password:</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>:<%=  password_field(:user, :password, :size => 15)%>  <%= error_message_on :user, :password %></td>
+      <td id="fonts">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ConformPassword</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>:<%=  password_field(:user, :password_confirmation, :size => 15) %> <%= error_message_on :user, :password_confirmation %></td>
+    </tr>
+    <tr>
+      <td height="35">Email</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>:<%= text_field :user,:email,:size=>15 %> <%= error_message_on :user, :email %>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="38">UpLoad Your  Photo </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td> <%= file_field :user,:photo%>&nbsp; <%= (error_message_on :user, :photo)%></td> 
+    </tr>
+    <tr>
+      <td height="60"><p><strong>PROFILE</strong></p>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;First Name</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>:<%= text_field :profile,:fname,:size=>15 %> <%= (error_message_on :profile, :fname)%></td>
+      <td id="fonts">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;Last Name</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>:<%= text_field :profile,:lname,:size=>15 %> <%= (error_message_on :profile, :lname)%></td>
+      <td id="fonts">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;Email</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>:<%= text_field :profile,:email,:size=>15 %> <%= (error_message_on :profile, :email)%></td>
+      <td id="fonts">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;Address</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>   <%= text_area :profile,:address,:cols => 18, :rows => 4 %>  <%= (error_message_on :profile, :address)%> </td>
+      <td id="fonts">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="59"><%= submit_tag "Create" %> </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td  align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <% end %>
+  <%#= link_to "users List",:action => :list %> </div>

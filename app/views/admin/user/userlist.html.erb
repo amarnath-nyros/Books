@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+<%= flash[:notice25]%>
+<body>
+<p>&nbsp; </p>
+  <p><strong>ADMIN USERS LIST</strong>
+  
+  <div align="right"></div>
+  <p><% form_for :user, :url => { :action => "search"} do  %>
+</p>
+<div style="background-color: #9999CC"><p><%= link_to "logout",:controller => "user", :action => "logout" %>&nbsp;</p>
+
+<%= flash[:message]%>
+  <table width="604" border="0" >
+    <tr>
+      <td colspan="4"><div align="center" class="style4"><u>SEARCH </u></div></td>
+    </tr>
+    <tr>
+      <td width="252">USER NAME </td>
+	  
+      <td width="257"><span class="style5"><%= text_field_tag ('user[name]', @val1) %></span> </td>
+      <td width="32"><span class="style5"></span></td>
+      <td width="33"><span class="style5"></span></td>
+    </tr>
+    <tr>
+    
+      
+    </tr>
+    <tr>
+     
+      <td>EMAIL</td>
+      <td><%= text_field_tag ('user[email]', @val2) %></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="39">&nbsp;</td>
+      <td><strong>clickit</strong>:<%= submit_tag "click"  %></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <p align="JUSTIFY" class="style1"> 
+    <% end %><strong>
+    <span class="style17">
+   
+  </span></strong></p>
+</div>
+<table width="420" height="141" >
+
+       <th>SNO  </th>
+	   <th>USERNAME </th>
+	   <th>EMAIL</th>                                          
+         <th>LIST  </th>
+		 <th>DELETE </th>  
+  <% for user in @users %> 
+  
+    
+   
+    <tr>
+      <td height="32"><%=user.id%></td>
+      <td width="27"><%=user.name %> </td>
+      <td width="29"><%=user.email%> </td>	  
+      <td width="28"><%= link_to "LIST",:controller => "user" ,:action=>"adminlist", :id =>user.id %></td>
+      <td ><%= link_to "Delete",:controller => "User" ,:action=>"delete" , :id =>user.id %>&nbsp;</td>
+    </tr> 
+    <%end%>
+	
+</table>
+<br/>
+ 
+  <%= will_paginate @users %>
+  <%= page_entries_info @users %> 
+
+

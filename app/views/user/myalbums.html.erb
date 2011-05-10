@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Untitled Document</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+</table>
+<p><%flash[:notice]%>&nbsp;</p>
+</div>
+<div   style="background-color:#CCCCCC;" >
+  <p><span class="style1">  </span><span class="style2">ALBUMS OF </span><%=session[:user_name]%></p>
+  <p> <%= link_to "Add album",:controller=>"album", :action => "addalbum" %></p>
+  <p>&nbsp;</p>
+  <table width="92%" border="0">
+    <tr>
+      <td width="5%" height="21">S.NO</td>
+      <td width="6%">NAME</td>
+      <td width="10%">LOCATION</td>
+      <td width="15%"><div align="center">ACTIONS</div></td>
+      <td width="14%"> MY ALBUM</td>
+      <td width="18%">RATINGS</td>
+      <td width="32%">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="866" border="0" height="81">
+    <% @albums.each do |@album| %>
+	
+    <tr>
+     <td width="42" height="77"><div align="center"><%= @album.id  %></div></td>
+      <td width="40" height="77"><div align="left"><%= @album.albumname  %></div></td>
+      <td width="89" height="77"><div align="left"><%= @album.albumlocation  %></div></td>
+	  		 
+ <td width="17"><%= link_to "Show",:controller => "album" ,:action=>"show", :id =>@album.id %> </td>
+<td width="17">  <%= link_to "Edit",:controller => "album", :action=>"edit", :id =>@album.id %></td>
+<td width="23"><%= link_to "Delete",:controller => "album" ,:action=>"delete", :id =>@album.id %></td>
+<td width="112"><%= image_tag @album.aphoto.url(:smallsthumb)%> </td>
+ 
+	<td width="92"><p>
+	<div id="star-ratings-block_<%=@album.id %>">
+	 <%= render :partial => "rating/rating", :locals => { :album => @album } %></p>
+      </div> <td width="136">&nbsp;
+        <div align="left">
+        <%end%></td>
+		
+      <td width="256">
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

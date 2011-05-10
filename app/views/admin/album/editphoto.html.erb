@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ADD PHOTO</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<% form_for (:album_photo,  :url => {:action => "editphoto",:id => params[:id]}, :html => {:multipart => true}) do  %> PLEASE EDIT THE IMAGE HERE
+<table width="381" border="0" height="120">
+ <%# @albums.each do |@album| %>
+ 
+    <tr>
+      <td height="57"><%= file_field :album_photo,:bphoto%>&nbsp; </td>
+      <td><%= image_tag @album_photo.bphoto.url(:smallsthumb)%></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+     <td width="168" height="57"><%= submit_tag "Create" %> </td>
+	 
+	 <td width="87">&nbsp;</td>
+	  <td width="386">&nbsp;</td>
+  </tr>
+	 <%= link_to "Add album",:controller=>"album", :action => "addalbum" %> 
+</table>
+
+  <%end%>
+</body>
+</html>

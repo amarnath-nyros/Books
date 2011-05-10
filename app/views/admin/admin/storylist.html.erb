@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Untitled Document</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+</head>
+
+<body bgcolor="#FFFFFF">
+ <% @stories.each do |@story| %>
+<table width="577" height="379" >
+  <tr>
+    <td width="114">&nbsp;User Name</td>
+    <td width="70">&nbsp;</td>
+    <td width="43">:&nbsp;</td>
+    <%= @user.name %> <%= error_message_on :user, :name %> 
+      <p>&nbsp;</p>
+    </tr>
+  <tr>
+    <td>FirstName</td>
+    <td>&nbsp;</td>
+    <td>:&nbsp;</td>
+    <td id="fonts"><%= @story.storyname %> <%= (error_message_on :profile, :fname)%>
+<p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td>&nbsp;Last Name<%= @story.storydiscription %> <%= (error_message_on :profile, :lname)%></td>
+    <td>&nbsp;</td>
+    <td>:&nbsp;</td>
+    <td id="fonts">&nbsp;
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+   
+    <td height="21"><p>&nbsp;</p>
+      <p><%#= link_to "Edit", :action => "edit" %></p>
+      <p>
+          <%= link_to "showlist",:controller=>"album", :action => "list" %>      </p>
+
+<%end%>
+
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+<head>
+
+<script language="JavaScript" type="text/javascript" >
+
+function formvalidation()
+    {
+	 var strc =/^[a-zA-Z]+$/;
+	var re = /^[\w ]+$/; 
+     var name1= document.getElementById('name');
+	 
+			   if((document.getElementById('name').value).trim() == "")
+			   {
+				   alert(" PLEASE Enter USERNAME");
+					document.getElementById('name').focus();
+				    return false;
+			   }
+			   
+			  if((document.getElementById('password').value).trim() == "")
+			   {
+				   alert(" PLEASE Enter pwd");
+					document.getElementById('password').focus();
+				    return false;
+			   }  
+			   
+			
+			   return true;
+	 }
+			 
+</script>
+
+<title>LOGIN</title>
+</head>
+
+
+<body >
+
+<p align="center"><br/>
+  <br/>
+</p>
+<div align="center">
+  <p><strong> WELCOME TO ADMIN </strong></p>
+  <table width="561" border="2" >
+    <tr>
+      <td height="40" colspan="3"><% form_tag ({:action => 'index'},{:onSubmit => 'return formvalidation();'} ) do %>  
+	  <p><strong>LOGIN</strong>......... </p>      </td>
+    </tr>
+    <tr>
+      <td colspan="3"><p>UserName <%= text_field_tag 'name'  %></p>      
+      <p> Password: <%= password_field_tag 'password' %></p>        <p><%= submit_tag "login" %></p></td>
+    </tr>
+</table>
+  <p>
+    <% end %>
+  </p>
+ 
+  <p><%#= link_to "Show my books", :action => "list" %></p>
+  <p align="center"><%= flash[:notice] %></p>
+
+<p align="center">&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><br/>
+<br/>
+  &nbsp;</p>
+</body>
+
+</html>

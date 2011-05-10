@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>EDIT</title>
+
+<p>
+  <% form_for :user, :url =>{ :action => "update",:id =>@album.id },  :html => {:multipart => true} do  %>
+</p>
+<p>YOU CAN EDIT YOUR ALBUM HERE AND CLICK UPDATE</p>
+
+<p><label for="album_Details">NAME</label>
+</p>
+
+<p align="JUSTIFY"><%= text_field 'album', 'albumname' %></p>
+<p>
+  <label for="album_Details">STORY DESCRIPTION </label>
+</p>
+
+<p align="JUSTIFY"><%= text_field 'album', 'albumlocation' %></p>
+<p>
+  <label for="album_category"></label>
+</p>
+
+<p>UPLOAD FILE</p>
+<p>  <%= file_field :album,:aphoto%>&nbsp; <%= (error_message_on :album, :aphoto)%> &nbsp;
+ &nbsp;
+
+</p>
+
+ 
+
+ <%= submit_tag "update"%>
+  
+  
+ <%= link_to "BACK",:controller=>"user", :action => "show",:id =>@album.id  %>
+  
+  
+<%end%>
+
